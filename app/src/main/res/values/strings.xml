@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">bestbase</string>
+    <string name="progress_show">进度 %d/%d</string>
+    <string name="download_update">下载更新</string>
+    <string name="cancel">取消</string>
+    <color name="error">#eb4333</color>
+    <color name="success">#439b53</color>
+</resources>
