@@ -16,17 +16,23 @@ import com.yyj.bestbase.base.impl.IView;
 
 import java.util.Objects;
 
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+
 import static com.yyj.bestbase.base.BaseActivity.START_SHEAR_ELE;
 
 public abstract class BaseFragment<T extends IPresenter> extends Fragment implements IView {
     protected View view;
     protected Bundle savedInstanceState;
+    private Unbinder unbinder;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.savedInstanceState = savedInstanceState;
         initSDK();
         view = createView(inflater, container);
+        unbinder = ButterKnife.bind(this, view);
         initData();
         bindView();
         bindEvent();
@@ -87,5 +93,11 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment implem
         } else {
             startActivityByAnim(intent, animIn, animExit);
         }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 }

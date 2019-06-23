@@ -1,5 +1,6 @@
 package com.yyj.bestbase.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -30,8 +31,10 @@ import java.util.Map;
 
 public class VolleyUtil {
 
-    private   Context context = MApplication.getInstance();
+    @SuppressLint("StaticFieldLeak")
+    private static Context context = MApplication.getInstance();
     private final RequestQueue mRequestQueue = Volley.newRequestQueue(context);
+    @SuppressLint("StaticFieldLeak")
     private static volatile VolleyUtil volleyUtil = null;
     private ImageLoader imageLoader = new ImageLoader(mRequestQueue, new ImageLoader.ImageCache() {
         private LruCache<String, Bitmap> mCache = new LruCache<String, Bitmap>((int) (Runtime.getRuntime().maxMemory() / 1024) / 8) {
