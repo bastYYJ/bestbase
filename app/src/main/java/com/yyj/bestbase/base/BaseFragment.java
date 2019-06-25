@@ -24,7 +24,6 @@ import static com.yyj.bestbase.base.BaseActivity.START_SHEAR_ELE;
 public abstract class BaseFragment<T extends IPresenter> extends Fragment implements IView {
     protected View view;
     protected Bundle savedInstanceState;
-    private Unbinder unbinder;
 
     @Nullable
     @Override
@@ -32,7 +31,6 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment implem
         this.savedInstanceState = savedInstanceState;
         initSDK();
         view = createView(inflater, container);
-        unbinder = ButterKnife.bind(this, view);
         initData();
         bindView();
         bindEvent();
@@ -98,6 +96,5 @@ public abstract class BaseFragment<T extends IPresenter> extends Fragment implem
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        unbinder.unbind();
     }
 }

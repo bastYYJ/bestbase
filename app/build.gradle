@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.jakewharton.butterknife'
 
 android {
     compileSdkVersion 28
@@ -52,7 +51,5 @@ dependencies {
     //j_soup
     api 'org.jsoup:jsoup:1.12.1'
 
-    //bind view
-    api 'com.jakewharton:butterknife:10.1.0'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:10.1.0'
+
 }

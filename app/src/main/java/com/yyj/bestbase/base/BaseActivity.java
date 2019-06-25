@@ -15,8 +15,6 @@ import com.yyj.bestbase.R;
 import com.yyj.bestbase.base.impl.IPresenter;
 import com.yyj.bestbase.base.impl.IView;
 
-import butterknife.ButterKnife;
-
 public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivity implements IView {
     public final static String START_SHEAR_ELE = "start_with_share_ele";
     public static final int SUCCESS = 1;
@@ -39,7 +37,6 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
         initSDK();
         onCreateActivity();
         mPresenter = initInjector();
-        ButterKnife.bind(this);
         attachView();
         initData();
         bindView();
