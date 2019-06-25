@@ -32,7 +32,7 @@ import java.util.Map;
 public class VolleyUtil {
 
     @SuppressLint("StaticFieldLeak")
-    private static Context context = MApplication.getInstance();
+    private static Context context;
     private final RequestQueue mRequestQueue = Volley.newRequestQueue(context);
     @SuppressLint("StaticFieldLeak")
     private static volatile VolleyUtil volleyUtil = null;
@@ -72,6 +72,9 @@ public class VolleyUtil {
 
 
     public static VolleyUtil getInstance() {
+        if (context == null){
+            throw new RuntimeException("no init volleyUtil context");
+        }
         synchronized (VolleyUtil.class) {
             if (volleyUtil == null) {
                 synchronized (VolleyUtil.class) {
@@ -81,6 +84,10 @@ public class VolleyUtil {
             }
         }
         return volleyUtil;
+    }
+
+    public static void init(Context context){
+        VolleyUtil.context = context;
     }
 
     public interface ResultCall<T> {
