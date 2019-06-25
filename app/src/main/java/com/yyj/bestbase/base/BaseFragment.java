@@ -16,9 +16,6 @@ import com.yyj.bestbase.base.impl.IView;
 
 import java.util.Objects;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
 import static com.yyj.bestbase.base.BaseActivity.START_SHEAR_ELE;
 
 public abstract class BaseFragment<T extends IPresenter> extends Fragment implements IView {
