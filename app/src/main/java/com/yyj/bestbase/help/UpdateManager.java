@@ -59,7 +59,7 @@ public class UpdateManager {
                 .subscribe(new MyObserver<UpdateBean>() {
                     @Override
                     public void onNext(UpdateBean updateBean) {
-                        if (DeviceUtils.getVersionCode(MApplication.getInstance()) < updateBean.getVersionCode()){
+                        if (DeviceUtils.getVersionCode(activity.getApplicationContext()) < updateBean.getVersionCode()){
                             if (updateBean.getIsForce() == MApplication.UpdateStatus.FORCE){
                                 ProgressDialog dialog = ProgressDialog.show(activity, "提示", "正在更新。。");
                                 dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
