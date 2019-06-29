@@ -16,6 +16,8 @@ public class UpdateBean implements Parcelable {
 
     private Integer isForce;
 
+    public UpdateBean() {
+    }
 
     protected UpdateBean(Parcel in) {
         if (in.readByte() == 0) {
