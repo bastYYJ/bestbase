@@ -52,7 +52,7 @@ public class UpdateManager {
 
         BaseModelImpl.getInstance().getRetrofitString(host)
                 .create(IHttpGetApi.class)
-                .getMap(url,queryMap, AnalyzeHeaders.getMap(null))
+                .getMap(url,queryMap, AnalyzeHeaders.getMap(new HashMap<>()))
                 .flatMap(response -> analyzeLastReleaseApi(response.body()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
