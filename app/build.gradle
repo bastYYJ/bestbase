@@ -32,8 +32,6 @@ dependencies {
 
     //json转换
     api 'com.alibaba:fastjson:1.1.70.android'
-    //volley
-    api 'com.mcxiaoke.volley:library:1.0.19'
 
     //RxAndroid
     api 'io.reactivex.rxjava2:rxjava:2.2.9'
