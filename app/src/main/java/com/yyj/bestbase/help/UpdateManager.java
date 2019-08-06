@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
 import com.yyj.bestbase.BuildConfig;
-import com.yyj.bestbase.MApplication;
+import com.yyj.bestbase.BestBase;
 import com.yyj.bestbase.base.BaseActivity;
 import com.yyj.bestbase.base.BaseModelImpl;
 import com.yyj.bestbase.base.observer.MyObserver;
@@ -60,7 +60,7 @@ public class UpdateManager {
                     @Override
                     public void onNext(UpdateBean updateBean) {
                         if (DeviceUtils.getVersionCode(activity.getApplicationContext()) < updateBean.getVersionCode()){
-                            if (updateBean.getIsForce() == MApplication.UpdateStatus.FORCE){
+                            if (updateBean.getIsForce() == BestBase.UpdateStatus.FORCE){
                                 ProgressDialog dialog = ProgressDialog.show(activity, "提示", "正在更新。。");
                                 dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                                 dialog.setMax(100);

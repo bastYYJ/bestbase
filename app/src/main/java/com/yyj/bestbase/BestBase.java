@@ -2,7 +2,7 @@ package com.yyj.bestbase;
 
 import android.content.Context;
 
-public class MApplication {
+public class BestBase {
 
     /**
      * 更新方式
