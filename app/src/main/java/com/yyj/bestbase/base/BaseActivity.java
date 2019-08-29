@@ -36,10 +36,10 @@ public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivi
         AppActivityManager.getInstance().add(this);
         initSDK();
         onCreateActivity();
+        bindView();
         mPresenter = initInjector();
         attachView();
         initData();
-        bindView();
         bindEvent();
         firstRequest();
 
