@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.target.Target;
 import com.bumptech.glide.request.transition.Transition;
@@ -60,6 +61,21 @@ public final class GlideUtil {
                 .into(target);
 
     }
+
+    public static void CropCircleTransformation(String url, ImageView target) {
+        CropCircleTransformation(url, target, R.drawable.loading, R.drawable.load_error);
+    }
+
+
+    public static void CropCircleTransformation(String url, ImageView target, int defaultRes, int errorRes) {
+        Glide.with(BestBase.getInstance())
+                .load(url)
+                .placeholder(defaultRes).error(errorRes)
+                .diskCacheStrategy(DiskCacheStrategy.AUTOMATIC)
+                .apply(RequestOptions.circleCropTransform())
+                .into(target);
+    }
+
 
     public static SimpleTarget<Drawable> createSimpleTarget(View target) {
         return new SimpleTarget<Drawable>() {
