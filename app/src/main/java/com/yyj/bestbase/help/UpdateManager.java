@@ -11,11 +11,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
-import com.yyj.bestbase.BuildConfig;
 import com.yyj.bestbase.BestBase;
+import com.yyj.bestbase.BuildConfig;
 import com.yyj.bestbase.base.BaseActivity;
 import com.yyj.bestbase.base.BaseModelImpl;
-import com.yyj.bestbase.base.observer.MyObserver;
+import com.yyj.bestbase.base.observer.BaseObserver;
 import com.yyj.bestbase.bean.UpdateBean;
 import com.yyj.bestbase.model.analyzeRule.AnalyzeHeaders;
 import com.yyj.bestbase.model.impl.IHttpGetApi;
@@ -48,31 +48,31 @@ public class UpdateManager {
 
         Map<String, String> queryMap = new HashMap<>();
         queryMap.put("imei", DeviceUtils.getIMEI(activity));
-        queryMap.put("code", DeviceUtils.getVersionCode(activity)+"");
+        queryMap.put("code", DeviceUtils.getVersionCode(activity) + "");
 
         BaseModelImpl.getInstance().getRetrofitString(host)
                 .create(IHttpGetApi.class)
-                .getMap(url,queryMap, AnalyzeHeaders.getMap(new HashMap<>()))
+                .getMap(url, queryMap, AnalyzeHeaders.getMap(new HashMap<>()))
                 .flatMap(response -> analyzeLastReleaseApi(response.body()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new MyObserver<UpdateBean>() {
+                .subscribe(new BaseObserver<UpdateBean>(null, updateActivity) {
                     @Override
                     public void onNext(UpdateBean updateBean) {
-                        if (DeviceUtils.getVersionCode(activity.getApplicationContext()) < updateBean.getVersionCode()){
-                            if (updateBean.getIsForce() == BestBase.UpdateStatus.FORCE){
+                        if (DeviceUtils.getVersionCode(activity.getApplicationContext()) < updateBean.getVersionCode()) {
+                            if (updateBean.getIsForce() == BestBase.UpdateStatus.FORCE) {
                                 ProgressDialog dialog = ProgressDialog.show(activity, "提示", "正在更新。。");
                                 dialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
                                 dialog.setMax(100);
-                                UpdateService.startThis(activity,updateBean,dialog);
-                            }else {
+                                UpdateService.startThis(activity, updateBean, dialog);
+                            } else {
                                 if (showMsg) {
                                     Intent intent = new Intent(activity, updateActivity.getClass());
-                                    intent.putExtra("updateBean",updateBean);
+                                    intent.putExtra("updateBean", updateBean);
                                     activity.startActivity(intent);
                                 }
                             }
-                        }else {
+                        } else {
                             if (showMsg) {
                                 Toast.makeText(activity, "当前已是最新版了！", Toast.LENGTH_SHORT).show();
                             }

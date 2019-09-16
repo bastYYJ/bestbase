@@ -20,6 +20,42 @@ public class BestBase {
         int NO_FORCE = 1;
     }
 
+    /**
+     * 网络异常
+     */
+    public static class NetErrorException extends RuntimeException {
+        public NetErrorException(String message) {
+            super(message);
+        }
+    }
+
+    /**
+     * 服务器异常
+     */
+    public static class ServerErrorException extends RuntimeException {
+        public ServerErrorException(String message) {
+            super(message);
+        }
+    }
+
+    /**
+     * 未登录或登录失效
+     */
+    public static class NoLoginException extends RuntimeException {
+        public NoLoginException(String message) {
+            super(message);
+        }
+    }
+
+    /**
+     * 其他异常
+     */
+    public static class OtherException extends RuntimeException {
+        public OtherException(String message) {
+            super(message);
+        }
+    }
+
 
     private static Context instance;
 
@@ -27,7 +63,7 @@ public class BestBase {
         return instance;
     }
 
-    public static void init(Context context,String appId,boolean isDebug) {
+    public static void init(Context context, String appId, boolean isDebug) {
         instance = context;
         CrashReport.initCrashReport(context, appId, isDebug);
     }

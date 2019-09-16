@@ -38,7 +38,7 @@ dependencies {
     api 'com.alibaba:fastjson:1.1.70.android'
 
     //RxAndroid
-    api 'io.reactivex.rxjava2:rxjava:2.2.9'
+    api 'io.reactivex.rxjava2:rxjava:2.2.10'
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
 
     //RxBus
@@ -61,6 +61,10 @@ dependencies {
 
 
     //bugly
-    api 'com.tencent.bugly:crashreport:3.0.0' //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.1.9
-    api 'com.tencent.bugly:nativecrashreport:3.7.1' //其中latest.release指代最新Bugly NDK版本号，也可以指定明确的版本号，例如3.0
+    api 'com.tencent.bugly:crashreport:3.0.0'
+    api 'com.tencent.bugly:nativecrashreport:3.7.1'
+
+    //paging
+    api 'android.arch.paging:runtime:1.0.1'
+    api "android.arch.paging:rxjava2:1.0.1"
 }
