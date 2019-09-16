@@ -7,12 +7,12 @@ import io.reactivex.Observer;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-public abstract class BaseObserver<T> implements Observer<T> {
+public abstract class HttpObserver<T> implements Observer<T> {
 
     private CompositeDisposable compositeDisposable;
     private BaseActivity activity;
 
-    protected BaseObserver(CompositeDisposable compositeDisposable, BaseActivity activity) {
+    protected HttpObserver(CompositeDisposable compositeDisposable, BaseActivity activity) {
         this.compositeDisposable = compositeDisposable;
         this.activity = activity;
     }

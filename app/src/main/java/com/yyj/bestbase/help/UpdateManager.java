@@ -15,7 +15,7 @@ import com.yyj.bestbase.BestBase;
 import com.yyj.bestbase.BuildConfig;
 import com.yyj.bestbase.base.BaseActivity;
 import com.yyj.bestbase.base.BaseModelImpl;
-import com.yyj.bestbase.base.observer.BaseObserver;
+import com.yyj.bestbase.base.observer.HttpObserver;
 import com.yyj.bestbase.bean.UpdateBean;
 import com.yyj.bestbase.model.analyzeRule.AnalyzeHeaders;
 import com.yyj.bestbase.model.impl.IHttpGetApi;
@@ -56,7 +56,7 @@ public class UpdateManager {
                 .flatMap(response -> analyzeLastReleaseApi(response.body()))
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new BaseObserver<UpdateBean>(null, updateActivity) {
+                .subscribe(new HttpObserver<UpdateBean>(null, updateActivity) {
                     @Override
                     public void onNext(UpdateBean updateBean) {
                         if (DeviceUtils.getVersionCode(activity.getApplicationContext()) < updateBean.getVersionCode()) {
