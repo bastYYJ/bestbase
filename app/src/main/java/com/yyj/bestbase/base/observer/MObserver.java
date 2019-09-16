@@ -3,7 +3,7 @@ package com.yyj.bestbase.base.observer;
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
-public abstract class MObserver implements Observer {
+public abstract class MObserver<T> implements Observer<T> {
     @Override
     public void onSubscribe(Disposable d) {
 
