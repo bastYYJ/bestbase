@@ -61,7 +61,7 @@ dependencies {
 
 
     //bugly
-    api 'com.tencent.bugly:crashreport:3.0.0'
+    api 'com.tencent.bugly:crashreport_upgrade:1.4.1'
     api 'com.tencent.bugly:nativecrashreport:3.7.1'
 
     //paging

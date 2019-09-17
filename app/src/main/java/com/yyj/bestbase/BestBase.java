@@ -2,6 +2,7 @@ package com.yyj.bestbase;
 
 import android.content.Context;
 
+import com.tencent.bugly.Bugly;
 import com.tencent.bugly.crashreport.CrashReport;
 
 public class BestBase {
@@ -65,7 +66,7 @@ public class BestBase {
 
     public static void init(Context context, String appId, boolean isDebug) {
         instance = context;
-        CrashReport.initCrashReport(context, appId, isDebug);
+        Bugly.init(context, appId, isDebug);
     }
 
 }
