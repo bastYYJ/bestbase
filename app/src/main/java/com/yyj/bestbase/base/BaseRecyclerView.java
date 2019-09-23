@@ -7,6 +7,7 @@ import android.arch.paging.DataSource;
 import android.arch.paging.LivePagedListBuilder;
 import android.arch.paging.PagedList;
 import android.arch.paging.PagedListAdapter;
+import android.arch.paging.PositionalDataSource;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.recyclerview.extensions.AsyncDifferConfig;
@@ -198,13 +199,20 @@ public class BaseRecyclerView<T extends RecyclerView.ViewHolder> {
 
 
     public interface Adapeter<T> {
-        List<JSONObject> list = new ArrayList<>();
 
         T onCreateViewHolder(@NonNull ViewGroup viewGroup, int i);
 
         void onBindViewHolder(@NonNull T mViewHold, int i, PagedList<JSONObject> currentList);
 
         DataSource<Integer, JSONObject> create();
+
+        default int getCurrentPage(PositionalDataSource.LoadRangeParams params) {
+            if (params.startPosition % params.loadSize != 0) {
+                return -1;
+            }
+
+            return params.startPosition / params.loadSize + 1;
+        }
     }
 
 }
