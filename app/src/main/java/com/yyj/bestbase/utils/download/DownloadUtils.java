@@ -2,7 +2,7 @@ package com.yyj.bestbase.utils.download;
 
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.File;
 import java.io.FileNotFoundException;

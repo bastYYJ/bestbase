@@ -1,7 +1,7 @@
 package com.yyj.bestbase.base.impl;
 
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 public interface IPresenter {
     /**

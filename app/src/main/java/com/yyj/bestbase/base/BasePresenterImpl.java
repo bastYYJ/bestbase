@@ -1,6 +1,6 @@
 package com.yyj.bestbase.base;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.yyj.bestbase.base.impl.IPresenter;
 import com.yyj.bestbase.base.impl.IView;
