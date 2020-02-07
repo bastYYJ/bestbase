@@ -7,6 +7,9 @@ import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import androidx.core.app.ActivityCompat;
+
+import android.os.Build;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 
 import static android.content.Context.TELEPHONY_SERVICE;
@@ -44,12 +47,19 @@ public class DeviceUtils {
      */
     @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getIMEI(Context context) {
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            return Settings.System.getString(
+                    context.getContentResolver(), Settings.Secure.ANDROID_ID);
+        }
         TelephonyManager TelephonyMgr = (TelephonyManager) context.getSystemService(TELEPHONY_SERVICE);
         if (ActivityCompat.checkSelfPermission(context, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
-
             return "";
         }
-        return TelephonyMgr.getDeviceId();
+        String deviceId = "";
+        if (TelephonyMgr != null) {
+            deviceId = TelephonyMgr.getDeviceId();
+        }
+        return deviceId;
     }
 
     //  判断手机的网络状态（是否联网）
