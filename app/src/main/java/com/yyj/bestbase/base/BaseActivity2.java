@@ -10,14 +10,13 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.qmuiteam.qmui.arch.QMUIActivity;
 import com.yyj.bestbase.R;
 import com.yyj.bestbase.base.impl.IPresenter;
 import com.yyj.bestbase.base.impl.IView;
 
-public abstract class BaseActivity<T extends IPresenter> extends AppCompatActivity implements IView {
+public abstract class BaseActivity2<T extends IPresenter> extends QMUIActivity implements IView {
     public final static String START_SHEAR_ELE = "start_with_share_ele";
     public static final int SUCCESS = 1;
     public static final int ERROR = -1;
