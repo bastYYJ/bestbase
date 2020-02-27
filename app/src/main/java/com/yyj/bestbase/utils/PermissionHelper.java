@@ -6,10 +6,12 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
 import android.provider.Settings;
+import android.util.Log;
+
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import android.util.Log;
 
 
 public class PermissionHelper {
@@ -27,20 +29,46 @@ public class PermissionHelper {
 
     public PermissionHelper(Activity activity) {
         mActivity = activity;
+        if (Build.VERSION.SDK_INT > Build.VERSION_CODES.P) {
+            mPermissionModels = new PermissionModel[]{
+                    new PermissionModel(
+                            "存储空间",
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            "我们需要您允许我们读写你的存储卡，以方便我们临时保存一些数据",
+                            WRITE_EXTERNAL_STORAGE_CODE
+                    ),
+                    new PermissionModel(
+                            "存储空间",
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            "我们需要您允许我们读写你的存储卡，以方便我们临时保存一些数据",
+                            WRITE_EXTERNAL_STORAGE_CODE
+                    )
+            };
+        } else {
+            mPermissionModels = new PermissionModel[]{
+                    new PermissionModel("电话", Manifest.permission.READ_PHONE_STATE, "我们需要读取手机信息的权限来标识您的身份", READ_PHONE_STATE_CODE),
+                    new PermissionModel(
+                            "存储空间",
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            "我们需要您允许我们读写你的存储卡，以方便我们临时保存一些数据",
+                            WRITE_EXTERNAL_STORAGE_CODE
+                    ),
+                    new PermissionModel(
+                            "存储空间",
+                            Manifest.permission.READ_EXTERNAL_STORAGE,
+                            "我们需要您允许我们读写你的存储卡，以方便我们临时保存一些数据",
+                            WRITE_EXTERNAL_STORAGE_CODE
+                    )
+            };
+        }
+
+
     }
 
     /**
      * 一般应用都需要的权限
      */
-    private PermissionModel[] mPermissionModels = new PermissionModel[]{
-            new PermissionModel("电话", Manifest.permission.READ_PHONE_STATE, "我们需要读取手机信息的权限来标识您的身份", READ_PHONE_STATE_CODE),
-            new PermissionModel(
-                    "存储空间",
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    "我们需要您允许我们读写你的存储卡，以方便我们临时保存一些数据",
-                    WRITE_EXTERNAL_STORAGE_CODE
-            )
-    };
+    private PermissionModel[] mPermissionModels;
 
 
     private Activity mActivity;
@@ -230,7 +258,7 @@ public class PermissionHelper {
         return null;
     }
 
-    private static class PermissionModel {
+    public static class PermissionModel {
 
         /**
          * 权限名称
