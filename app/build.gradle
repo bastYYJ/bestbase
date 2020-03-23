@@ -66,7 +66,7 @@ dependencies {
 
 
     api "com.qmuiteam:qmui:$qmui_arch_version"
-    implementation "com.qmuiteam:arch:$qmui_arch_version"
+    api "com.qmuiteam:arch:$qmui_arch_version"
     annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version"
 
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11'
