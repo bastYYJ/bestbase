@@ -24,6 +24,7 @@ android {
         targetCompatibility = '1.8'
     }
 }
+def qmui_arch_version = '2.0.0-alpha04'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -64,7 +65,9 @@ dependencies {
     api 'com.tencent.bugly:nativecrashreport:3.7.1'
 
 
-    api 'com.qmuiteam:qmui:2.0.0-alpha05'
+    api "com.qmuiteam:qmui:$qmui_arch_version"
+    implementation "com.qmuiteam:arch:$qmui_arch_version"
+    annotationProcessor "com.qmuiteam:arch-compiler:$qmui_arch_version"
 
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.0-beta11'
 
