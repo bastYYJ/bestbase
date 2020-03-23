@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.qmuiteam.qmui.arch.QMUIFragment;
 import com.yyj.bestbase.base.impl.IPresenter;
 import com.yyj.bestbase.base.impl.IView;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
 
 import static com.yyj.bestbase.base.BaseActivity.START_SHEAR_ELE;
 
-public abstract class BaseFragment<T extends IPresenter> extends Fragment implements IView {
+public abstract class BaseFragment<T extends IPresenter> extends QMUIFragment implements IView {
     protected View view;
     protected Bundle savedInstanceState;
     protected T mPresenter;

@@ -41,22 +41,27 @@ public abstract class HttpObserver<T> implements Observer<T> {
     }
 
     protected void handleNoLoginError(Throwable e) {
-        activity.toast(e.getMessage());
+        defaultHandleError(e);
     }
 
     protected void handleError(Throwable e) {
-        activity.toast(e.getMessage());
+        defaultHandleError(e);
     }
 
     protected void handleServerError(Throwable e) {
-        activity.toast(e.getMessage());
+        defaultHandleError(e);
     }
 
     protected void handleOtherError(Throwable e) {
-        activity.toast(e.getMessage());
+        defaultHandleError(e);
     }
 
     protected void handleNetError(Throwable e) {
+        defaultHandleError(e);
+    }
+
+
+    protected void defaultHandleError(Throwable e) {
         activity.toast(e.getMessage());
     }
 

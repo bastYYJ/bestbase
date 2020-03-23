@@ -1,10 +1,11 @@
 package com.yyj.bestbase.utils;
 
 import android.graphics.drawable.Drawable;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -19,8 +20,11 @@ import jp.wasabeef.glide.transformations.BlurTransformation;
 
 public final class GlideUtil {
 
+    public static int defaultRes = R.drawable.loading;
+    public static int errorRes = R.drawable.load_error;
+
     public static void sendImageLoader(String url, ImageView target) {
-        sendImageLoader(url, target, R.drawable.loading, R.drawable.load_error);
+        sendImageLoader(url, target, defaultRes, errorRes);
     }
 
     public static void preload(String url, ImageView target) {
@@ -63,7 +67,7 @@ public final class GlideUtil {
     }
 
     public static void CropCircleTransformation(String url, ImageView target) {
-        CropCircleTransformation(url, target, R.drawable.loading, R.drawable.load_error);
+        CropCircleTransformation(url, target, defaultRes, errorRes);
     }
 
 
