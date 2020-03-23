@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
     defaultConfig {
         minSdkVersion 19
-        targetSdkVersion 28
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -68,5 +68,5 @@ dependencies {
     api 'androidx.paging:paging-runtime:2.1.0'
     api "android.arch.paging:rxjava2:1.0.1"
 
-    api 'com.qmuiteam:qmui:1.4.0'
+    api 'com.qmuiteam:qmui:2.0.0-alpha05'
 }
