@@ -24,7 +24,7 @@ android {
         targetCompatibility = '1.8'
     }
 }
-def qmui_arch_version = '2.0.0-alpha04'
+def qmui_arch_version = '2.0.0-alpha06'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
